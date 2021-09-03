@@ -1,0 +1,47 @@
+<div class="form-group container">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div class="form-control">
+            <label class="label"for="name">First Name : </label>
+            <input class="input form-control w-50 m-1"id="name" type="text" formControlName="name"><br>
+        </div>
+        <div class="form-control">
+
+            <label class="label"for="email">Email : </label>
+            <input class="input form-control w-50 m-1" id="email" type="email" formControlName="email"><br>
+        </div>
+        <div class="form-control">
+
+            <label class="label"for="password">Password : </label>
+            <input class="input form-control w-50 m-1" id="password" type="password" formControlName="password"><br>
+        </div>
+        <div class="form-control">
+
+            <label class="label"for="mobile">Mobile No. : </label>
+            <input class="input form-control w-50 m-1" id="mobile" type="text" formControlName="mobile"><br>
+        </div>
+        <div class="form-control">
+
+            <label class="label"for="city">City : </label>
+            <input class="input form-control w-50 m-1" id="city" type="text" formControlName="city"><br>
+        </div>
+
+
+        <div formArrayName="families">
+            <h2>Family</h2>
+            <button class="btn btn-warning" (click)="addFamily()">+ Add Member</button>
+
+            <div *ngFor="let family of families.controls; let i=index">
+                <div [formGroupName]="i">
+                    <label class="label"for="name{{ i }}">Name</label>
+                    <input class="input form-control w-30 m-1" id="name{{ i }}" type="text" formControlName="famName">
+                    <label class="label"for="relation{{ i }}">Relation</label>
+                    <input class="input form-control w-30 m-1" id="relation{{ i }}" type="text" formControlName="relName">
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+
+    </form>
+
+</div>
